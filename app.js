@@ -1,21 +1,3 @@
-// Отладочное логирование
-console.log("Web App initialized");
-
-// Логируем все события
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
-    console.log('Main button clicked');
-});
-
-Telegram.WebApp.onEvent('viewportChanged', function() {
-    console.log('Viewport changed');
-});
-
-
-
-
-
-
-
 let tg = window.Telegram.WebApp;
 tg.expand();
 
@@ -26,14 +8,12 @@ tg.MainButton.hide();
 
 let selectedPhrase = "";
 
-// Функция для обработки выбора фразы
 function selectPhrase(phraseId, buttonText) {
     selectedPhrase = phraseId;
     tg.MainButton.setText(`Отправить: ${buttonText}`);
     tg.MainButton.show();
 }
 
-// Назначаем обработчики для всех кнопок
 document.getElementById("btn1").addEventListener("click", function() {
     selectPhrase("1", "Кавказская пленница");
 });
@@ -58,11 +38,9 @@ document.getElementById("btn6").addEventListener("click", function() {
     selectPhrase("6", "Служебный роман");
 });
 
-// Обработчик главной кнопки
 tg.MainButton.onClick(function() {
     if (selectedPhrase) {
         console.log("Sending data:", selectedPhrase);
         tg.sendData(selectedPhrase);
-        // Не закрываем веб-приложение сразу, чтобы увидеть результат
     }
 });
