@@ -1,3 +1,21 @@
+// Отладочное логирование
+console.log("Web App initialized");
+
+// Логируем все события
+Telegram.WebApp.onEvent('mainButtonClicked', function() {
+    console.log('Main button clicked');
+});
+
+Telegram.WebApp.onEvent('viewportChanged', function() {
+    console.log('Viewport changed');
+});
+
+
+
+
+
+
+
 let tg = window.Telegram.WebApp;
 tg.expand();
 
